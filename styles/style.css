@@ -1,0 +1,263 @@
+:root{
+    /* Sizes: */
+    --l: 980px;
+    --s: 740px;
+    --clr-selected: #58c93a;
+    --clr-body-borders: #e1e0e0;
+}
+
+
+@font-face {
+    font-family: lato;
+    src: url(/fonts/Lato-Regular.ttf);
+}
+@font-face {
+    font-family: lato-bold;
+    src: url(/fonts/Lato-Bold.ttf);
+}
+
+
+/* Basics */
+
+html{
+    font-family: lato;
+}
+
+* {
+    box-sizing: border-box;
+} 
+
+button{
+    font-family: lato-bold;
+    cursor: pointer;
+}
+
+img{
+    user-select: none;
+}
+
+/* HEADER */
+header{
+    height: 8.125em;
+    box-shadow: inset 0 -6px 0 #1e1e1e;
+    background-color: #292929;
+}
+
+nav{
+    height: inherit;
+    max-width: var(--l);
+    margin-inline-start: 1.5em;
+    margin-inline-end:auto;
+}
+
+.nav-list{
+    color: #fff;
+    height: inherit;
+}
+
+.nav-list li{
+    height: inherit;
+    border-inline-end: 1px solid #1e1e1e;
+    width: 8.125em;
+}
+
+.nav-list li:first-child{
+    border-inline-start: 1px solid #1e1e1e;
+
+}
+.nav-list li button{
+    width: 100%;
+    box-shadow: inset 0 -6px 0 #1e1e1e;
+    background-color: transparent;
+    color: #fff;
+    border:none;
+    height: inherit;
+}
+.nav-list li button:hover{
+    background-color:#393e46;
+}
+
+.nav-list li button.selected{
+    box-shadow: inset 0 -6px 0 var(--clr-selected);
+    color: var(--clr-selected);
+}
+
+.cascading-menu{
+    display: none;
+}
+
+.hamburger{
+    filter:contrast(0)
+}
+
+
+/* MAIN CONTENT */
+.article-teaser{
+    margin-block-start: 5em;
+
+}
+.article-teaser:last-of-type{
+    margin-block-end: 5em;
+}
+.article-teaser > img{
+    object-fit: contain;
+
+    width: 50%;
+    margin-inline-end: 2.5em;
+}
+
+.teaser-title{
+    margin: 0;
+    font-size: 1.75em;
+    color: #4f4e4e;
+}
+.article-teaser p{
+    line-height: 1.25em;
+    margin-inline-end: 1.5em ;
+}
+
+.teaser-info button{
+    border: 2px solid #c2c2c2;
+    background-color: #ffffff;
+    color: #c2c1c1;
+    border-radius: 2em;
+    width: 11.625em;
+    padding: 0.8125em;
+}
+.teaser-info button:hover{
+    transition: 0.2;
+    border-color: var(--clr-selected);
+    color: var(--clr-selected);
+}
+
+
+.main-nav{
+    height: 5em;
+    border-block-start: 1px solid var(--clr-body-borders);
+}
+
+.main-nav button{
+    transition: 0.2s;
+    opacity: 0.4;
+    background-color: transparent;
+    border: none;
+    font-size: 1.125em;
+    position: relative;
+}
+.main-nav button:hover{
+    opacity: 1;
+
+}
+
+.main-nav button span{
+    position: relative;
+    top: -3px
+}
+
+/* FOOTER */
+
+footer{
+    box-shadow: inset 0 1px 0 #e1e0e0;
+    background-color: #f8f8f8;
+    height: 19.7em;
+    padding: 5em;
+}
+
+.rights{
+    color: #a6a6a6;
+    font-size: 0.75em;
+}
+.rights a{
+    color: #939292;
+    font-family: lato-bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+.links{
+    gap: 1.25em;
+
+}
+.png{
+    transition: 0.2s;
+    background-color: #e5e5e5;
+    width: 2.5em;
+    height: 2.5em;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.png:hover{
+    background-color: #516fad;
+}
+/* HELPERS */
+
+.main-layout{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.main-layout > *:not(.full){
+    max-width: var(--l);
+    border: 1px solid var(--clr-body-borders);
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+}
+
+/* FLEX HELPERS */
+
+.flex{
+    display: flex;
+}
+.flex.column{
+    flex-direction: column;
+}
+.flex.justify-center{
+    justify-content: center;
+}
+.flex.align-center{
+    align-items: center;
+}
+.flex.space-between{
+    justify-content: space-between;
+}
+
+/* LIST HELPER */
+.clear-list{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+@media (min-width: 980px){
+    .article-teaser{
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 980px){
+    header{
+        height: 7em;
+    }
+}
+
+@media (max-width:740px){
+    .article-teaser{
+        flex-direction: column;
+        align-items: center;
+        margin: 1.5em;
+    }
+    .article-teaser > img{
+        margin: 0;
+        width: 100%;
+    }
+    .cascading-menu{
+        display: block;
+        margin-inline-end:1.5em;
+    }
+    .large-menu{
+        display: none;
+    }
+}
