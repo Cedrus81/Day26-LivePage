@@ -19,9 +19,7 @@
                 <li><button> Work</button></li>
                 <li><button> Contact</button></li>
             </ul>
-            <div class="cascading-menu">
-                <img class="hamburger" src="/images/hamburger.png" alt="">
-            </div>
+            <img class="hamburger" src="/images/hamburger.png" alt="" onclick="onOpenMenu()">
         </nav>
     </header>
     <main class="flex column">
@@ -71,7 +69,6 @@
         <div class="main-nav flex space-between">
             <button><span>&larr;</span> Previous</button>
             <button>Next <span>&rarr;</span></button>
-
         </div>
     </main>
     <footer class="full flex column align-center justify-center space-between">
@@ -86,6 +83,18 @@
             <div class="png flex align-center justify-center"><img src="/images/basketball.png" alt=""></div>
         </div>
     </footer>
+
+    <!-- MODAL/s -->
+    <div class="cascading-menu">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script src="js/main.js"></script>
 </body>
 
 </html>

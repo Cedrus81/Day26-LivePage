@@ -82,12 +82,13 @@ nav{
     color: var(--clr-selected);
 }
 
-.cascading-menu{
+.hamburger{
     display: none;
 }
 
 .hamburger{
-    filter:contrast(0)
+    filter:contrast(0);
+    cursor: pointer;
 }
 
 
@@ -191,6 +192,14 @@ footer{
 .png:hover{
     background-color: #516fad;
 }
+
+/* MODALS */
+
+.cascading-menu{
+    display: none;
+    position: absolute;
+    top: 0;
+}
 /* HELPERS */
 
 .main-layout{
@@ -253,7 +262,7 @@ footer{
         margin: 0;
         width: 100%;
     }
-    .cascading-menu{
+    .hamburger{
         display: block;
         margin-inline-end:1.5em;
     }
