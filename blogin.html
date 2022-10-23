@@ -14,17 +14,28 @@
         <nav class="flex align-center space-between">
             <img src="/images/Blogin.png" alt="">
             <ul class="large-menu nav-list flex align-center clear-list">
-                <li><button class="btn-nav selected " onclick="onSelectCategory(this)"> Journal</button></li>
-                <li><button class="btn-nav" onclick="onSelectCategory(this)"> About</button></li>
-                <li><button class="btn-nav" onclick="onSelectCategory(this)"> Work</button></li>
-                <li><button class="btn-nav" onclick="onSelectCategory(this)"> Contact</button></li>
+
+                <div class="dropdown" onmouseenter="toggleDropDown(this)" onmouseleave="hideDropDown(this)">
+                    <button class="btn-nav selected" onclick="onSelectCategory(this)">
+                        Journal</button>
+                    <div class="dropdown-menu">
+                        <button class="btn-nav" onclick="onSelectCategory(this)">Journal 2022</button>
+                        <button class="btn-nav" onclick="onSelectCategory(this)">Journal 2021</button>
+                        <button class="btn-nav" onclick="onSelectCategory(this)">Journal 2020</button>
+                        <button class="btn-nav" onclick="onSelectCategory(this)">Journal 2019</button>
+                    </div>
+                </div>
+
+                <button class="btn-nav" onclick="onSelectCategory(this)"> About</button>
+                <button class="btn-nav" onclick="onSelectCategory(this)"> Work</button>
+                <button class="btn-nav" onclick="onSelectCategory(this)"> Contact</button>
             </ul>
             <img onclick="onToggleMenu()" class="hamburger" src="/images/hamburger.png" alt="" onclick="onOpenMenu()">
         </nav>
     </header>
 
     <main class="flex column">
-        <div class="main-screen" onclick="onToggleMenu()"></div>
+        <div class="main-screen" onclick="toggleScreen()"></div>
         <section class="article-teaser flex">
             <img src="/images/Layer_2.png" alt="">
             <div class="teaser-info flex column space-between">
@@ -36,7 +47,7 @@
                     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                     pariatur...
                 </p>
-                <button class="btn btn-round btn-arrow">Continue Reading</button>
+                <button class="btn btn-round btn-arrow" onclick="onReadMore()">Continue Reading</button>
             </div>
         </section>
         <section class="article-teaser flex ">
@@ -50,7 +61,7 @@
                     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                     pariatur...
                 </p>
-                <button class="btn btn-round btn-arrow">Continue Reading</button>
+                <button class="btn btn-round btn-arrow" onclick="onReadMore()">Continue Reading</button>
             </div>
         </section>
         <section class="article-teaser flex">
@@ -64,7 +75,7 @@
                     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                     pariatur...
                 </p>
-                <button class="btn btn-round btn-arrow">Continue Reading</button>
+                <button class="btn btn-round btn-arrow" onclick="onReadMore()">Continue Reading</button>
             </div>
         </section>
 
@@ -88,13 +99,31 @@
     </footer>
 
     <!-- MODAL/s -->
-    <div class="cascading-menu">
+    <div class="modal cascading-menu">
         <ul class="nav-list flex column align-center clear-list">
-            <li><button class="btn-nav selected" onclick="onSelectCategory(this)"> Journal</button></li>
-            <li><button class="btn-nav" onclick="onSelectCategory(this)"> About</button></li>
-            <li><button class="btn-nav" onclick="onSelectCategory(this)"> Work</button></li>
-            <li><button class="btn-nav" onclick="onSelectCategory(this)"> Contact</button></li>
+            <div class="dropdown" onmouseenter="toggleDropDown(this)" onmouseleave="hideDropDown(this)">
+                <button class="btn-nav selected" onclick="onSelectCategory(this)">
+                    Journal</button>
+                <div class="dropdown-menu">
+                    <button class="btn-nav" onclick="onSelectCategory(this)">Journal 2022</button>
+                    <button class="btn-nav" onclick="onSelectCategory(this)">Journal 2021</button>
+                    <button class="btn-nav" onclick="onSelectCategory(this)">Journal 2020</button>
+                    <button class="btn-nav" onclick="onSelectCategory(this)">Journal 2019</button>
+                </div>
+            </div> <button class="btn-nav" onclick="onSelectCategory(this)"> About</button>
+            <button class="btn-nav" onclick="onSelectCategory(this)"> Work</button>
+            <button class="btn-nav" onclick="onSelectCategory(this)"> Contact</button>
         </ul>
+    </div>
+
+    <div class="modal read-more">
+        <h2>Join us to get access to the latest stories!</h2>
+        <input type="email">
+        <br>
+        <div class="modal-controllers">
+            <button class="btn btn-round submit">Submit</button>
+            <button class="btn btn-round close" onclick="toggleScreen()">Close</button>
+        </div>
     </div>
 
     <script src="js/main.js"></script>

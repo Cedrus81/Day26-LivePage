@@ -5,7 +5,10 @@
     --clr-selected: #58c93a;
     --clr-body-borders: #e1e0e0;
     --clr-header-background: #292929;
-    --transition-fast: 0.2s
+    --clr-nav-btn-hover: #393e46;
+    --transition-fast: 0.2s;
+    --box-sdw: 5px 5px 15px 1px rgba(0,0,0,0.63);
+
 }
 
 
@@ -49,38 +52,34 @@ header{
 nav{
     height: inherit;
     max-width: var(--l);
-    margin-inline-start: 1.5em;
+    margin-inline-start: auto;
     margin-inline-end:auto;
 }
 
 .nav-list{
-    color: #fff;
     height: inherit;
 }
 
-.nav-list li{
+
+.btn-nav{
+    box-shadow: inset 0 -6px 0 #1e1e1e;
+    background-color: var(--clr-header-background);
+    color: #fff;
+    border:none;
     height: inherit;
     border-inline-end: 1px solid #1e1e1e;
     width: 8.125em;
 }
 
-.nav-list li:first-child{
+.nav-list .btn-nav:first-child{
     border-inline-start: 1px solid #1e1e1e;
-
-}
-.nav-list li button{
-    width: 100%;
-    box-shadow: inset 0 -6px 0 #1e1e1e;
-    background-color: transparent;
-    color: #fff;
-    border:none;
-    height: inherit;
-}
-.nav-list li button:hover{
-    background-color:#393e46;
 }
 
-.nav-list li button.selected{
+.btn-nav:hover{
+    background-color:var(--clr-nav-btn-hover);
+}
+
+.btn-nav.selected{
     box-shadow: inset 0 -6px 0 var(--clr-selected);
     color: var(--clr-selected);
 }
@@ -91,6 +90,31 @@ nav{
     cursor: pointer;
 }
 
+.dropdown{
+    background-color: inherit;
+    height: inherit;
+    position: relative;
+}
+
+.dropdown-menu{
+    pointer-events: none;
+    color: #1e1e1e;
+    position: absolute;
+    left: 0;
+    top: calc(100% - 2rem);
+    opacity: 0;
+    width: 8.125em;
+    transition: 0.2s opacity ease-in-out, 0.2s transform ease-in-out;
+}
+.dropdown-menu.active{
+    transform: translateY(2rem);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dropdown-menu .btn-nav{
+    padding: 1.5rem;
+}
 
 /* MAIN CONTENT */
 .article-teaser{
@@ -117,13 +141,7 @@ nav{
     margin-inline-end: 1.5em ;
 }
 
-.teaser-info .btn{
-    border: 2px solid #c2c2c2;
-    background-color: #ffffff;
-    color: #c2c1c1;
-    width: max-content;
-    padding: 0.8125em;
-}
+
 
 
 
@@ -187,29 +205,38 @@ footer{
 }
 
 /* BUTTONS */
+.btn{
+    border: 2px solid #c2c2c2;
+    background-color: transparent;
+    color: #c2c1c1;
+    width: max-content;
+    padding: 0.8125em;
+    transition: 0.4s;
+}
 
+.btn:hover{
+color: var(--clr-selected);
+border-color: var(--clr-selected);
+}
 
-  .btn-round {
+.btn-round {
     border-radius: 2em;
-  }
-  
-  .btn-arrow {
+}
+
+.btn-arrow {
     position: relative;
-  
     transition: padding .4s;
-  }
-  
-  .btn.btn-arrow:hover {
+}
+
+.btn.btn-arrow:hover {
     padding-inline-end: 2.6em;
-    color: var(--clr-selected);
-    border-color: var(--clr-selected);
-  }
-  
-  .btn-arrow:hover::after {
+}
+
+.btn-arrow:hover::after {
     content: "→";
     position: absolute;
     right: 0.8em;
-  }
+}
 
 /* COMPONENTS */
   .main-screen{
@@ -222,7 +249,8 @@ footer{
   }
 /* MODALS */
 
-.cascading-menu{
+.modal{
+    box-shadow: var(--box-sdw);
     transition: var(--transition-fast);
     position: fixed;
     top: 0;
@@ -230,18 +258,43 @@ footer{
     transform: translateX(-50%);
     opacity: 0;
     pointer-events: none;
-    width: 28.5em;
-    height: 24em;
 }
-.cascading-menu li{
-    width: 100%;
-    height: 6em;
+.modal.cascading-menu{
+    width: 28.5em;
 }
 
-.cascading-menu li button{
+.modal.cascading-menu > .nav-list > *{
+    width: 100%;
+    height: 100%;
+    padding-block-start: 2em;
+    padding-block-end: 2em;
+}
+
+
+.modal.cascading-menu .btn-nav{
     background-color: var(--clr-header-background);
     font-size: 1.5em;
 }
+.cascading-menu .btn-nav:hover{
+    background-color:var(--clr-nav-btn-hover);
+}
+.modal.read-more{
+    background-color: #fff;
+    top: 50%;
+    transform: translate(-40%,-50%);
+}
+
+body.screen-modal.read .read-more{
+    pointer-events: all;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    padding: 2em;
+}
+body.screen-modal .main-screen{
+    opacity: 0.5;
+    pointer-events: all;
+}
+
 /* HELPERS */
 
 .main-layout{
@@ -314,13 +367,9 @@ footer{
     .large-menu{
         display: none;
     }
-    body.menu-open .cascading-menu{
+    body.screen-modal.menu .cascading-menu{
         pointer-events: all;
         opacity: 0.9;
         transform: translate(-50%, 7em);
-    }
-    body.menu-open .main-screen{
-        opacity: 0.5;
-        pointer-events: all;
     }
 }
